@@ -4,6 +4,10 @@ Easily create custom completion menus using any tab-separated file, in the forma
 
 `word   kind    menu    info`
 
+So, for instance, a WordPress function:
+
+`get_bloginfo(	f	string $show, string $filter | string	Retrieves information about the current site.`
+
 See `:help complete-items` for more info:
 
 ```
