@@ -40,6 +40,8 @@ let g:customcpt_types =  {
 endif
 ```
 
+Though, all this does is `set completefunc` for those filetypes, which could just as easily be done manually.
+
 ## Thanks
 
 This plugin is heavily based on @aaronspring&rsquo;s [cdo_lazy_vim](https://github.com/aaronspring/cdo_lazy_vim) plugin. Thanks Aaron! &#x1F44B;
