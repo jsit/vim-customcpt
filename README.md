@@ -11,12 +11,12 @@ So, for instance, a WordPress function:
 See `:help complete-items` for more info:
 
 ```
-	word		the text that will be inserted, mandatory
-	kind		single letter indicating the type of completion
-	menu		extra text for the popup menu, displayed after "word"
-				or "abbr"
-	info		more information about the item, can be displayed in a
-				preview window
+word		the text that will be inserted, mandatory
+kind		single letter indicating the type of completion
+menu		extra text for the popup menu, displayed after "word"
+            or "abbr"
+info		more information about the item, can be displayed in a
+            preview window
 ```
 
 ## Options
@@ -25,6 +25,7 @@ By itself, this plugin does nothing. Only by setting a couple dictionaries in yo
 
 `g:customcpt_funcs`: A Dictionary with a function name for a key and a List of files to use for completion with it
 ```
+
 let g:customcpt_funcs = {
 		\ 'WPComplete' : [
 			\ $HOME . '/.vim/dict/wordpress',
@@ -32,10 +33,12 @@ let g:customcpt_funcs = {
 	\ }
 endif
 ```
+
 `g:customcpt_types`: A Dictionary with a comma-separated list of filetypes as keys and the name of a completion function to use with them
+
 ```
 let g:customcpt_types =  {
-			\ 'php,php.html' : 'WPComplete',
+        \ 'php,php.html' : 'WPComplete',
 	\ }
 endif
 ```

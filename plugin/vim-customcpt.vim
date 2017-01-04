@@ -6,7 +6,7 @@ if !exists('g:customcpt_types')
 	let g:customcpt_types =  {}
 endif
 
-for [s:cptfunc, s:cptfile] in items(g:customcpt_funcs)
+for [s:cptfunc, s:cptfiles] in items(g:customcpt_funcs)
 
 	fun! {s:cptfunc}(findstart, base)
 		if a:findstart
@@ -20,7 +20,10 @@ for [s:cptfunc, s:cptfile] in items(g:customcpt_funcs)
 			" Record what matches − we pass this to complete() later
 			let l:res = []
 			" Find cdo matches
-			let s:cdo_data = readfile(s:cptfile[0])
+			let s:cdo_data = []
+			for cptfile in s:cptfiles
+				let s:cdo_data = extend(s:cdo_data, readfile(cptfile))
+			endfor
 			for l:line in s:cdo_data
 				" Check if it matches what we're trying to complete
 				let s:split = split(l:line, '	')
