@@ -53,13 +53,19 @@ for [s:cptfunc, s:cptfiles] in items(g:customcpt_funcs)
 					else
 						let l:menu = ''
 					endif
+					if has_key(l:dobj, 'info')
+						let l:info = l:dobj['info']
+					else
+						let l:info = ' '
+					endif
 					call add(l:res, {
 								\ 'word': a:base
 								\ })
 					call add(l:res, {
 								\ 'word' : l:word,
 								\ 'kind' : l:kind,
-								\ 'menu' : l:menu
+								\ 'menu' : l:menu,
+								\ 'info' : l:info,
 								\ })
 					let l:i = l:i + 1
 				endif
