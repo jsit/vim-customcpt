@@ -47,6 +47,9 @@ for [s:cptfunc, s:cptfiles] in items(g:customcpt_funcs)
 					else
 						let s:info = ' '
 					endif
+          call add(l:res, {
+                \ 'word': a:base
+                \ })
 					call add(l:res, {
 								\ 'icase': 1,
 								\ 'word': s:word,
