@@ -4,9 +4,17 @@ Easily create custom completion menus using any tab-separated file, in the forma
 
 `word   kind    menu    info`
 
+*Or* a dictionary-/json-formatted file, like this:
+
+`{ 'word(' : { 'kind' : 'f', 'menu' : 'menu', 'info' : 'info' } }`
+
 So, for instance, a WordPress function:
 
 `get_bloginfo(	f	string $show, string $filter | string	Retrieves information about the current site.`
+
+Or, as dictionary/json:
+
+`{ 'get_bloginfo(' : { 'kind' : 'f', 'menu' : 'string $show, string $filter | string', 'info' : 'Retrieves information about the current site.' } }`
 
 See `:help complete-items` for more info:
 
