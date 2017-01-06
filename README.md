@@ -38,7 +38,7 @@ info		more information about the item, can be displayed in a
 
 Your custom completion file will show up as a "full" complete menu similar to the omnicomplete menu, like so:
 
-![](https://d1zjcuqflbd5k.cloudfront.net/files/acc_68608/VbAy?response-content-disposition=inline;%20filename=Screen%20Shot%202017-01-06%20at%201.41.23%20PM.png&Expires=1483728413&Signature=BYKH7rajDKlwXI8qJGQOxheguw08i-4YPPmtVE2ZFYbF3~cCTvNA1r0g8kUd~k79l4OTteUnbPPozQ6bchfDowrU-2-1SIPVF5DKsevTdntteyfNvl71eh4ctl8bnMn8aElrDz7rWjzlOEKufvXh2q8ICDvq6nm6EpPuFdduTts_&Key-Pair-Id=APKAJTEIOJM3LSMN33SA)
+![](http://i.imgur.com/rxbVIdH.png)
 
 ## Options
 
