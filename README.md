@@ -8,7 +8,7 @@ Easily create custom completion menus using any dictionary/json file, in the for
 
 `word   kind    menu    info`
 
-So, for instance, a WordPress function:
+So, for instance, a WordPress function (a full example wordpress.json file is included in this repo):
 
 ```
 {
@@ -19,6 +19,7 @@ So, for instance, a WordPress function:
   }
 }
 ```
+
 
 Or, as tab-separated values:
 
