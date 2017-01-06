@@ -17,48 +17,105 @@ for [s:cptfunc, s:cptfiles] in items(g:customcpt_funcs)
 			endwhile
 			return start
 		else
+
 			" Record what matches − we pass this to complete() later
 			let l:res = []
+
 			" Find cdo matches
-			let s:cdo_data = []
+			let l:lst = [] " List for tsv files
+			let l:dctnry = {} " Dict for dictionary/json files
+
 			for cptfile in s:cptfiles
-				let s:cdo_data = extend(s:cdo_data, readfile(cptfile))
+				try
+					let file = eval(join(readfile(cptfile)))
+					let l:dctnry = extend(l:dctnry, file) " do this if we want to use a dictionary instead
+				catch
+					let file = readfile(cptfile)
+					let l:lst = extend(l:lst, file)
+				endtry
 			endfor
-			for l:line in s:cdo_data
-				" Check if it matches what we're trying to complete
-				let s:split = split(l:line, '	')
-				if s:split[0] =~ '^' . a:base
-					" It matches! See :help complete() for the full docs on the key names
-					" for this dict.
-					let s:word = s:split[0]
-					let s:abbr = s:split[0]
-					if len(s:split) > 1
-						let s:kind = s:split[1]
+
+			" Parse dictionary/json files
+			let l:i = 1
+			for [l:dkey, l:dobj] in sort(items(l:dctnry))
+				if l:i > 20
+					break
+				endif
+				if l:dkey =~ '^' . a:base
+					let l:word = l:dkey
+					if has_key(l:dobj, 'kind')
+						let l:kind = l:dobj['kind']
 					else
-						let s:kind = ''
+						let l:kind = ''
 					endif
-					if len(s:split) > 2
-						let s:menu = s:split[2]
+					if has_key(l:dobj, 'menu')
+						let l:menu = l:dobj['menu']
 					else
-						let s:menu = ''
+						let l:menu = ''
 					endif
-					if len(s:split) > 3
-						let s:info = s:split[3]
+					if has_key(l:dobj, 'info')
+						let l:info = l:dobj['info']
 					else
-						let s:info = ' '
+						let l:info = ' '
 					endif
 					call add(l:res, {
-								\ 'icase': 1,
-								\ 'word': s:word,
-								\ 'abbr': s:abbr,
-								\ 'kind': s:kind,
-								\ 'menu': s:menu,
-								\ 'info': s:info,
+								\ 'word': a:base
 								\ })
+					call add(l:res, {
+								\ 'word' : l:word,
+								\ 'kind' : l:kind,
+								\ 'menu' : l:menu,
+								\ 'info' : l:info,
+								\ })
+					let l:i = l:i + 1
+				endif
+			endfor
+
+			" Parse tsv files
+			let l:i = 1
+			for l:line in l:lst
+				if l:i > 20
+					break
+				endif
+				" Check if it matches what we're trying to complete
+				let l:split = split(l:line, '	')
+				if l:split[0] =~ '^' . a:base
+					" It matches! See :help complete() for the full docs on the key names
+					" for this dict.
+					let l:word = l:split[0]
+					let l:abbr = l:split[0]
+					if len(l:split) > 1
+						let l:kind = l:split[1]
+					else
+						let l:kind = ''
+					endif
+					if len(l:split) > 2
+						let l:menu = l:split[2]
+					else
+						let l:menu = ''
+					endif
+					if len(l:split) > 3
+						let l:info = l:split[3]
+					else
+						let l:info = ' '
+					endif
+					call add(l:res, {
+								\ 'word': a:base
+								\ })
+					call add(l:res, {
+								\ 'icase': 1,
+								\ 'word': l:word,
+								\ 'abbr': l:abbr,
+								\ 'kind': l:kind,
+								\ 'menu': l:menu,
+								\ 'info': l:info,
+								\ })
+					let l:i = l:i + 1
 				endif
 			endfor
 			return res
 		endif
+
 	endfun
 
 endfor

@@ -1,10 +1,26 @@
 # vim-customcpt
 
-Easily create custom completion menus using any tab-separated file, in the format:
+Easily create custom completion menus using any dictionary/json file, in the format:
+
+`{ 'word(' : { 'kind' : 'f', 'menu' : 'menu', 'info' : 'info' } }`
+
+*Or* a tab-separated values file, like this:
 
 `word   kind    menu    info`
 
 So, for instance, a WordPress function:
+
+```
+{
+  'get_bloginfo(' : {
+    'kind' : 'f',
+    'menu' : 'string $show, string $filter | string',
+    'info' : 'Retrieves information about the current site.',
+  }
+}
+```
+
+Or, as tab-separated values:
 
 `get_bloginfo(	f	string $show, string $filter | string	Retrieves information about the current site.`
 
@@ -32,7 +48,7 @@ By itself, this plugin does nothing. Only by setting a couple dictionaries in yo
 
 let g:customcpt_funcs = {
 		\ 'WPComplete' : [
-			\ $HOME . '/.vim/dict/wordpress',
+			\ $HOME . '/.vim/wordpress.json',
 		\ ]
 	\ }
 endif

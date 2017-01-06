@@ -1,0 +1,32 @@
+*vim-customcpt.txt*	For Vim version 7.3	Last change: 2017 January 4
+*customcpt*
+
+==============================================================================
+CONTENTS                                              *vim-customcpt-contents*
+
+    1.Global Options............................|vim-customcpt-global-options|
+
+==============================================================================
+1. Global Options                               *vim-customcpt-global-options*
+
+                                                           *'customcpt_funcs'*
+Type: dictionary
+Default: {}
+A Dictionary with a function name for a key and a List of files to use for
+completion with it
+    let g:customcpt_funcs = {
+            \ 'WPComplete' : [
+                \ $HOME . '/.vim/dict/wordpress'
+            \ ]
+        \ }
+
+                                                           *'customcpt_types'*
+Type: dictionary
+Default: {}
+A Dictionary with a comma-separated list of filetypes as keys and the name
+of a completion function to use with them. Though, all this does is
+`set completefunc` for those filetypes, which could just as easily be done
+manually.
+    let g:customcpt_types =  {
+            \ 'php,php.html' : 'WPComplete'
+        \ }
