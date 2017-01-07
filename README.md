@@ -2,7 +2,7 @@
 
 Easily create custom completion menus using any dictionary/json file, in the format:
 
-`{ 'word(' : { 'kind' : 'f', 'menu' : 'menu', 'info' : 'info' } }`
+`{ "word(" : { "kind" : "f", "menu" : "menu", "info" : "info" } }`
 
 *Or* a tab-separated values file, like this:
 
@@ -12,10 +12,10 @@ So, for instance, a WordPress function (a full example wordpress.json file is in
 
 ```
 {
-  'get_bloginfo(' : {
-    'kind' : 'f',
-    'menu' : 'string $show, string $filter | string',
-    'info' : 'Retrieves information about the current site.',
+  "get_bloginfo(" : {
+    "kind" : "f",
+    "menu" : "string $show, string $filter | string",
+    "info" : "Retrieves information about the current site.",
   }
 }
 ```
@@ -48,8 +48,8 @@ By itself, this plugin does nothing. Only by setting a couple dictionaries in yo
 ```
 
 let g:customcpt_funcs = {
-		\ 'WPComplete' : [
-			\ $HOME . '/.vim/wordpress.json',
+		\ "WPComplete" : [
+			\ $HOME . "/.vim/wordpress.json",
 		\ ]
 	\ }
 endif
@@ -59,7 +59,7 @@ endif
 
 ```
 let g:customcpt_types =  {
-        \ 'php,php.html' : 'WPComplete',
+        \ "php,php.html" : "WPComplete",
 	\ }
 endif
 ```
