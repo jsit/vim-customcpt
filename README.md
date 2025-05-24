@@ -52,7 +52,6 @@ let g:customcpt_funcs = {
 			\ $HOME . "/.vim/wordpress.json",
 		\ ]
 	\ }
-endif
 ```
 
 `g:customcpt_types` (optional): A Dictionary with a comma-separated list of filetypes as keys and the name of a completion function to use with them
@@ -61,7 +60,6 @@ endif
 let g:customcpt_types =  {
         \ "php,php.html" : "WPComplete",
 	\ }
-endif
 ```
 
 Alternatively, you could just do something like this in your .vimrc:
