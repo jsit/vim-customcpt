@@ -48,18 +48,18 @@ By itself, this plugin does nothing. Only by setting a couple dictionaries in yo
 
 ```
 let g:customcpt_funcs = {
-		\ "WPComplete" : [
-			\ $HOME . "/.vim/wordpress.json",
-		\ ]
-	\ }
+	\ "WPComplete" : [
+		\ $HOME . "/.vim/wordpress.json",
+	\ ]
+\ }
 ```
 
 `g:customcpt_types` (optional): A Dictionary with a comma-separated list of filetypes as keys and the name of a completion function to use with them
 
 ```
 let g:customcpt_types =  {
-        \ "php,php.html" : "WPComplete",
-	\ }
+	\ "php,php.html" : "WPComplete",
+\ }
 ```
 
 Alternatively, you could just do something like this in your .vimrc:
